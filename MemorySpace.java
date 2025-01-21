@@ -94,11 +94,11 @@ public class MemorySpace {
 	 *            the starting address of the block to freeList
 	 */
 	public void free(int address) {
-		/* 
-		if (freeList.getSize() == 0) {
+		 
+		if (allocatedList.getSize() == 0) {
 			throw new IllegalArgumentException(
 					"index must be between 0 and size");
-		}*/
+		}
 		ListIterator itr = allocatedList.iterator();
 		MemoryBlock targetBlock = null;
 		while (itr.hasNext()) {

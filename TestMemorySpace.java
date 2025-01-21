@@ -10,9 +10,7 @@ public class TestMemorySpace {
         String actual = "";
         try {
             int address = memorySpace.malloc(100);
-            System.out.println(memorySpace);
             memorySpace.free(address);
-            System.out.println(memorySpace);
             actual += (memorySpace.toString().equals(expectedText));
         } catch (Exception e) {
             actual = TesterMessagesEnum.ERROR + e.getMessage();
