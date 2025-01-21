@@ -131,21 +131,18 @@ public class LinkedList {
 	 *        the given memory block
 	 */
 	public void addLast(MemoryBlock block) {
+		// i make the size bigger since i'm adding a node
+		size++;
 		Node newNode = new Node(block);
 		// if the list is empty i make the first node the newnode
 		if (first == null) {
 			first = newNode;
+			last = newNode;
 		} 
 		// i point the last node to the newnode 
 		else {
-			Node current = first;
-			while (current.next != null) {
-				current = current.next;
-			}
-			current.next = newNode;
+			last.next = newNode;
 		}
-		// i make the size bigger since i added a node.
-		size++;
 	}
 	
 	/**
