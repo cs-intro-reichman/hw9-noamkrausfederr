@@ -107,6 +107,7 @@ public class LinkedList {
 		// i use two nodes so that i can insert the newnode between them
 		// at the given index.
 		else {
+			/* 
 			Node prev = first;
 			Node current = first.next;
 			int n = 0;
@@ -117,10 +118,22 @@ public class LinkedList {
 			}
 			newNode.next = current;
 			prev.next = newNode;
+			*/
+			Node in = getNode(index);
+			Node prev = getNode(index - 1);
+			newNode.next = in;
+			prev.next = newNode;
 		}
 		// i make the size bigger since i added a node.
 		size++;
 	}
+
+	/// newnode = 5
+	/// 1 2 3
+	/// prev = 1
+	/// 2
+	/// index = 1
+	/// 
 
 	/**
 	 * Creates a new node that points to the given memory block, and adds it
