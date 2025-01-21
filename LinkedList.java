@@ -89,8 +89,9 @@ public class LinkedList {
 		}
 		Node newNode = new Node(block);
 		// if the list is empty, i make the first node the newnode
-		if (first == null) {
+		if (size == 0) {
 			first = newNode;
+			last = newNode;
 		} 
 		else if (index == 0) {
 			addFirst(block);
@@ -142,6 +143,7 @@ public class LinkedList {
 		// i point the last node to the newnode 
 		else {
 			last.next = newNode;
+			last = newNode;
 		}
 	}
 	
