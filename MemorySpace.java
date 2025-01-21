@@ -91,11 +91,15 @@ public class MemorySpace {
 	 *            the starting address of the block to freeList
 	 */
 	public void free(int address) {
+		if (freeList.getSize() == 0) {
+			throw new IllegalArgumentException(
+					"index must be between 0 and size");
+		}
 		ListIterator itr = allocatedList.iterator();
 		MemoryBlock targetBlock = null;
 		while (itr.hasNext()) {
 			MemoryBlock newBlock = itr.next();
-			// i check if the base adress of the current block is equal to the address
+			// i check if the base address of the current block is equal to the address
 			// given in the input
 			//System.out.println(newBlock.baseAddress);
 			if (newBlock.baseAddress == address) {
@@ -104,8 +108,11 @@ public class MemorySpace {
 			}
 		}
 		if (targetBlock != null) {
+			MemoryBlock m = new MemoryBlock(targetBlock.length, targetBlock.baseAddress);
 			allocatedList.remove(targetBlock);
+			System.out.println(allocatedList);
 			freeList.addLast(targetBlock);
+			System.out.println(freeList);
 		}
 	}
 	
