@@ -5,18 +5,30 @@ public class TestMemorySpace {
 
        
         MemorySpace memorySpace = new MemorySpace(100);
-        String expectedText = "(0 , 100) \n";
+        String expected1 = "\n(0 , 5) (5 , 20) (25 , 20) (45 , 55) ";
+        String expected2 = "(0 , 5) (5 , 20) \n(25 , 20) (45 , 55) ";
+        String expected3 = "(0 , 25) \n(25 , 20) (45 , 55) ";
         String expected = "true";
         String actual = "";
+        boolean actualB = true;
         try {
-            int address = memorySpace.malloc(100);
+            int address = memorySpace.malloc(5);
+            int address1 = memorySpace.malloc(20);
+            int address2 = memorySpace.malloc(20);
+            int address3 = memorySpace.malloc(55);
+            actualB = (actualB && address == 0 && address1 == 5 && address2 == 25 && address3 == 45 && memorySpace.toString().equals(expected1));
             memorySpace.free(address);
-            actual += (memorySpace.toString().equals(expectedText));
+            memorySpace.free(address1);
+            actualB = (actualB && memorySpace.toString().equals(expected2));
+            memorySpace.defrag();
+            actual += (actualB && memorySpace.toString().equals(expected3));
         } catch (Exception e) {
             actual = TesterMessagesEnum.ERROR + e.getMessage();
         }
         System.out.println(expected);
         System.out.println(actual);
+
+        
 
 /* 
         MemorySpace memorySpace = new MemorySpace(100);
