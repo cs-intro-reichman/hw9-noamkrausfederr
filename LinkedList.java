@@ -107,24 +107,13 @@ public class LinkedList {
 		// i use two nodes so that i can insert the newnode between them
 		// at the given index.
 		else {
-			/* 
-			Node prev = first;
-			Node current = first.next;
-			int n = 0;
-			while (n < (index - 1)) {
-				prev = current;
-				current = current.next;
-				n++;
-			}
-			newNode.next = current;
-			prev.next = newNode;
-			*/
 			Node prev = getNode(index - 1);
 			newNode.next = prev.next;
 			prev.next = newNode;
+			// i make the size bigger since i added a node.
+			size++;
 		}
-		// i make the size bigger since i added a node.
-		size++;
+
 	}
 
 	/// newnode = 5

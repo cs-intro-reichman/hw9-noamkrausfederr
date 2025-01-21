@@ -9,11 +9,25 @@
  */
 public class LinkedListTest {
 	public static void main (String[] args) {
-		MemorySpace m = new MemorySpace(1000);
-		System.out.println(m + "\n");
+		LinkedList list = new LinkedList();
+        MemoryBlock block = new MemoryBlock(10, 1000);
+        list.add(0, block);
+        MemoryBlock block2 = new MemoryBlock(20, 2000);
+        list.add(1, block2);
+		System.out.println(list);
+		System.out.println(list.getSize());
+        String expected = "true";
+        String actual = "";
+        try {
+            actual += list.getFirst().block.equals(block) && list.getLast().block.equals(block2) && list.getSize() == 2;
+        } catch (Exception e) {
+            actual = TesterMessagesEnum.ERROR + e.getMessage();
+        }
+		System.out.println(expected);
+        System.out.println(actual);
 		//// Expected output:
 		//// (0 , 1000) 
-		
+		/* 
 		// Makes a few memory allocations, and keeps the addresses
 		// of the allocated blocks in an array.
 		int[] addresses = new int[20];
@@ -42,5 +56,7 @@ public class LinkedListTest {
 		//// expected output:
 		//// (959 , 41) (0 , 269) (348 , 50) (407 , 1) (452 , 3) (534 , 68) (698 , 1) (767 , 42) (918 , 32) 
 		//// (269 , 79) (398 , 9) (408 , 44) (455 , 79) (602 , 96) (699 , 68) (809 , 109) (950 , 9) 
+		/// 
+		*/
 	}
 }
