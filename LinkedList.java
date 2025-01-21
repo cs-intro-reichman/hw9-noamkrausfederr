@@ -56,7 +56,10 @@ public class LinkedList {
 		}
 		Node current = first;
 		int n = 0;
-		while (n <= index) {
+		if (index == 0) {
+			return current;
+		}
+		while (n < index) {
 			current = current.next;
 			n++;
 		}
