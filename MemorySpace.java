@@ -59,6 +59,7 @@ public class MemorySpace {
 	 */
 	public int malloc(int length) {		
 		ListIterator itr = freeList.iterator();
+		ListIterator itr2 = allocatedList.iterator();
 		int index = 0;
 		while (itr.hasNext()) {
 			// i store the current block in the list in a memoryblock called newBlock
@@ -69,12 +70,14 @@ public class MemorySpace {
 				MemoryBlock m = new MemoryBlock(newBlock.baseAddress, length); 
 				// i add the block m to the end of the allocated list
 				allocatedList.addLast(m);
-
 				// i remove the block i created from the list and replace it with a block that contains
 				// the updated baseaddress and length
 				freeList.remove(newBlock);
 				MemoryBlock b = new MemoryBlock(newBlock.baseAddress + length, newBlock.length - length);
 				freeList.add(index, b);
+				if (b.length == 0){
+					freeList.remove(0);
+				}
 				return m.baseAddress;
 			}
 			index++;
@@ -108,11 +111,8 @@ public class MemorySpace {
 			}
 		}
 		if (targetBlock != null) {
-			MemoryBlock m = new MemoryBlock(targetBlock.length, targetBlock.baseAddress);
 			allocatedList.remove(targetBlock);
-			System.out.println(allocatedList);
 			freeList.addLast(targetBlock);
-			System.out.println(freeList);
 		}
 	}
 	
