@@ -293,6 +293,7 @@ public class LinkedList {
 			str += current.block + " ";
 			current = current.next;
 		}
+		
 		//removes the trailing space and adds a ')'
 		return str.substring(0, str.length() - 1) + ")";
 	}
