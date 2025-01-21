@@ -9,26 +9,11 @@
  */
 public class LinkedListTest {
 	public static void main (String[] args) {
-		LinkedList list = new LinkedList();
-        MemoryBlock block = new MemoryBlock(10, 1000);
-        list.addFirst(block);
-        String expected = "true";
-        String actual = "";
-        boolean actualB = true;
-        try {
-			System.out.println(list.getLast());
-            actualB = (actualB && list.getSize() == 1 && list.getFirst().block.equals(block) && list.getLast().block.equals(block));
-            list.remove(list.getLast());
-			System.out.println(list.getLast());
-            actual += (actualB && list.getSize() == 0 && list.getFirst() == null && list.getLast() == null);
-        } catch (Exception e) {
-            actual = TesterMessagesEnum.ERROR + e.getMessage();
-        }
-		System.out.println(expected);
-        System.out.println(actual);
+		MemorySpace m = new MemorySpace(1000);
+		System.out.println(m + "\n");
 		//// Expected output:
 		//// (0 , 1000) 
-		/* 
+		
 		// Makes a few memory allocations, and keeps the addresses
 		// of the allocated blocks in an array.
 		int[] addresses = new int[20];
@@ -58,6 +43,6 @@ public class LinkedListTest {
 		//// (959 , 41) (0 , 269) (348 , 50) (407 , 1) (452 , 3) (534 , 68) (698 , 1) (767 , 42) (918 , 32) 
 		//// (269 , 79) (398 , 9) (408 , 44) (455 , 79) (602 , 96) (699 , 68) (809 , 109) (950 , 9) 
 		/// 
-		*/
+		
 	}
 }

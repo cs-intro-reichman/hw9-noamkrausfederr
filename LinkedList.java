@@ -297,7 +297,7 @@ public class LinkedList {
 	public String toString() {
 		if (size == 0) return "";
 		// i go over the list and add the blocks of the nodes to the string
-		String str = "(";
+		String str = "";
 		Node current = first;
 		while (current != null) {
 			str += current.block + " ";
@@ -305,6 +305,6 @@ public class LinkedList {
 		}
 
 		//removes the trailing space and adds a ')'
-		return str.substring(0, str.length() - 1) + ")";
+		return str;
 	}
 }

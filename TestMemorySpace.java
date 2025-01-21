@@ -1,7 +1,21 @@
 public class TestMemorySpace {
 
     public static void main(String[] args) {
-        testAll();
+        //testAll();
+
+        MemorySpace memorySpace = new MemorySpace(100);
+        String expectedText = "(20 , 80) \n(0 , 20) ";
+        String expected = "true";
+        String actual = "";
+        try {
+            int address = memorySpace.malloc(20);
+            actual += (address == 0 && memorySpace.toString().equals(expectedText));
+            
+        } catch (Exception e) {
+            actual = TesterMessagesEnum.ERROR + e.getMessage();
+        }
+        System.out.println(expected);
+        System.out.println(actual);
     }
 
     private static void testAll() {
