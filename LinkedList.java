@@ -278,7 +278,7 @@ public class LinkedList {
 		}
 		if (n == 0) {
 			throw new IllegalArgumentException(
-				"memory block must be in the list");
+				"index must be between between 0 and size");
 		}
 		Node newnNode = new Node(block);
 		remove(newnNode);
