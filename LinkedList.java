@@ -210,18 +210,6 @@ public class LinkedList {
 	public void remove(Node node) {
 		Node prev = null;
 		Node current = first;
-		if (indexOf(node.block) == 0) {
-			first = first.next;
-		}
-		else if (indexOf(node.block) == size) {
-			Node n = new Node(node.block);
-			int i = 0;
-			while (i < (size-1)) {
-				n = n.next;
-				i++;
-			}
-			last = n;
-		}
 		// the while loop runs as long as it doesnt reach the end of
 		// the list and os long as i didnt find the node yet.
 		while (current != null && current.block != node.block) {
@@ -239,6 +227,20 @@ public class LinkedList {
 			prev.next = current.next;
 		}
 		size--;
+		if (size == 0) {
+			last = null;
+		} else if (size == 1) {
+			last = first;
+		} else {
+			Node findLast = first;
+			while (findLast.next != null) {
+				findLast = findLast.next;
+				if(findLast == null) {
+					break;
+				}
+			}
+			last = findLast; 
+		}
 	}
 
 	/**

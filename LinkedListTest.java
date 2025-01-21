@@ -11,15 +11,16 @@ public class LinkedListTest {
 	public static void main (String[] args) {
 		LinkedList list = new LinkedList();
         MemoryBlock block = new MemoryBlock(10, 1000);
-        list.add(0, block);
-        MemoryBlock block2 = new MemoryBlock(20, 2000);
-        list.add(1, block2);
-		System.out.println(list);
-		System.out.println(list.getSize());
+        list.addFirst(block);
         String expected = "true";
         String actual = "";
+        boolean actualB = true;
         try {
-            actual += list.getFirst().block.equals(block) && list.getLast().block.equals(block2) && list.getSize() == 2;
+			System.out.println(list.getLast());
+            actualB = (actualB && list.getSize() == 1 && list.getFirst().block.equals(block) && list.getLast().block.equals(block));
+            list.remove(list.getLast());
+			System.out.println(list.getLast());
+            actual += (actualB && list.getSize() == 0 && list.getFirst() == null && list.getLast() == null);
         } catch (Exception e) {
             actual = TesterMessagesEnum.ERROR + e.getMessage();
         }
