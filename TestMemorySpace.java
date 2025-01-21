@@ -5,15 +5,15 @@ public class TestMemorySpace {
 
        
         MemorySpace memorySpace = new MemorySpace(100);
-        String expectedText = "\n(0 , 40) (40 , 40) (80 , 20) ";
+        String expectedText = "(0 , 100) \n";
         String expected = "true";
         String actual = "";
         try {
-            int address1 = memorySpace.malloc(40);
-            int address2 = memorySpace.malloc(40);
-            int address3 = memorySpace.malloc(20);
+            int address = memorySpace.malloc(100);
             System.out.println(memorySpace);
-            actual += (address1 == 0 && address2 == 40 && address3 == 80 && memorySpace.toString().equals(expectedText));
+            memorySpace.free(address);
+            System.out.println(memorySpace);
+            actual += (memorySpace.toString().equals(expectedText));
         } catch (Exception e) {
             actual = TesterMessagesEnum.ERROR + e.getMessage();
         }
