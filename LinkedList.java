@@ -116,13 +116,6 @@ public class LinkedList {
 		}
 	}
 
-	/// newnode = 5
-	/// 1 2 3
-	/// prev = 1
-	/// 2
-	/// index = 1
-	/// 
-
 	/**
 	 * Creates a new node that points to the given memory block, and adds it
 	 * to the end of this list (the node will become the list's last element).
@@ -217,6 +210,18 @@ public class LinkedList {
 	public void remove(Node node) {
 		Node prev = null;
 		Node current = first;
+		if (indexOf(node.block) == 0) {
+			first = first.next;
+		}
+		else if (indexOf(node.block) == size) {
+			Node n = new Node(node.block);
+			int i = 0;
+			while (i < (size-1)) {
+				n = n.next;
+				i++;
+			}
+			last = n;
+		}
 		// the while loop runs as long as it doesnt reach the end of
 		// the list and os long as i didnt find the node yet.
 		while (current != null && current.block != node.block) {
