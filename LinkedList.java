@@ -95,6 +95,7 @@ public class LinkedList {
 		if (size == 0) {
 			first = newNode;
 			last = newNode;
+			size++;
 		} 
 		else if (index == 0) {
 			addFirst(block);
@@ -113,7 +114,6 @@ public class LinkedList {
 			// i make the size bigger since i added a node.
 			size++;
 		}
-
 	}
 
 	/// newnode = 5
