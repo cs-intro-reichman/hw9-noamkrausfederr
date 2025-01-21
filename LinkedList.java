@@ -157,9 +157,10 @@ public class LinkedList {
 		if (size == 0) {
 			first = newNode;
 			last = newNode;
+		} else {
+			newNode.next = first;
+			first = newNode;
 		}
-		newNode.next = first;
-		first = newNode;
 		size++;
 	}
 
