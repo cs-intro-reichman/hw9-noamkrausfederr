@@ -116,13 +116,8 @@ public class LinkedList {
 				n++;
 			}
 			newNode.next = current;
-			prev = newNode;
+			prev.next = newNode;
 		}
-		Node l = first;
-		while (l.next != null) {
-			l = l.next;
-		}
-		last = l;
 		// i make the size bigger since i added a node.
 		size++;
 	}
