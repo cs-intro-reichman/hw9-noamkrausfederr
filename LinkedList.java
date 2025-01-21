@@ -107,10 +107,10 @@ public class LinkedList {
 		// i use two nodes so that i can insert the newnode between them
 		// at the given index.
 		else {
-			Node prev = null;
-			Node current = first;
+			Node prev = first;
+			Node current = first.next;
 			int n = 0;
-			while (n < index) {
+			while (n < (index - 1)) {
 				prev = current;
 				current = current.next;
 				n++;
