@@ -157,6 +157,10 @@ public class LinkedList {
 	 */
 	public void addFirst(MemoryBlock block) {
 		Node newNode = new Node(block);
+		if (size == 0) {
+			first = newNode;
+			last = newNode;
+		}
 		newNode.next = first;
 		first = newNode;
 		size++;
@@ -293,7 +297,7 @@ public class LinkedList {
 			str += current.block + " ";
 			current = current.next;
 		}
-		
+
 		//removes the trailing space and adds a ')'
 		return str.substring(0, str.length() - 1) + ")";
 	}
